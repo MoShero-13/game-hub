@@ -8,8 +8,14 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { MenuRoot } from "./ui/menu";
+import { Platform } from "@/hooks/useGames";
 
-const PlatformSelector = () => {
+interface Props {
+  onSelectPLatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectPLatform, selectedPlatform }: Props) => {
   const { data, error } = usePlatforms();
 
   if (error) return null;
@@ -18,7 +24,7 @@ const PlatformSelector = () => {
     <MenuRoot>
       <MenuTrigger asChild>
         <Button variant="subtle" size="sm" marginBottom={5}>
-          Platforms
+          {selectedPlatform?.name || "Platform"}
         </Button>
       </MenuTrigger>
       <MenuContent
@@ -28,7 +34,11 @@ const PlatformSelector = () => {
         marginBottom={5}
       >
         {data?.map((platform) => (
-          <MenuItem key={platform.id} value={platform.slug}>
+          <MenuItem
+            onClick={() => onSelectPLatform(platform)}
+            key={platform.id}
+            value={platform.slug}
+          >
             {platform.name}
           </MenuItem>
         ))}
