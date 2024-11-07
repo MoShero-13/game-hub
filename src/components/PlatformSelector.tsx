@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { MenuRoot } from "./ui/menu";
 import { Platform } from "@/hooks/useGames";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface Props {
   onSelectPLatform: (platform: Platform) => void;
@@ -24,7 +25,7 @@ const PlatformSelector = ({ onSelectPLatform, selectedPlatform }: Props) => {
     <MenuRoot>
       <MenuTrigger asChild>
         <Button variant="subtle" size="sm" marginBottom={5}>
-          {selectedPlatform?.name || "Platform"}
+          {selectedPlatform?.name || "Platform"} <IoIosArrowDown />
         </Button>
       </MenuTrigger>
       <MenuContent
