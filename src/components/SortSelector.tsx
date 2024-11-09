@@ -36,7 +36,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
       </MenuTrigger>
       <MenuContent
         position="absolute"
-        top="125px"
+        top="200px"
         left={{ base: "115px", lg: "365px" }}
         width="200px"
         marginBottom={5}

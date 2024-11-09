@@ -30,7 +30,7 @@ const PlatformSelector = ({ onSelectPLatform, selectedPlatform }: Props) => {
       </MenuTrigger>
       <MenuContent
         position="absolute"
-        top="125px"
+        top="200px"
         width="200px"
         marginBottom={5}
       >
