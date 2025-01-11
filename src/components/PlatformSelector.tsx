@@ -34,7 +34,7 @@ const PlatformSelector = ({ onSelectPLatform, selectedPlatform }: Props) => {
         width="200px"
         marginBottom={5}
       >
-        {data?.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             onClick={() => onSelectPLatform(platform)}
             key={platform.id}
