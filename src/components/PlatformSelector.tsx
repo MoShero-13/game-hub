@@ -8,7 +8,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { MenuRoot } from "./ui/menu";
-import { Platform } from "@/hooks/useGames";
+import { Platform } from "@/hooks/usePlatforms";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface Props {
