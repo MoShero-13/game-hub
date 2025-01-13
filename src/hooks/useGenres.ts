@@ -11,10 +11,14 @@ export interface Genre {
 const apiClient = new APIClient<Genre>("/genres");
 
 const useGenres = () =>
-  useQuery({
-    queryKey: ["genres"],
-    queryFn: () => apiClient.getAll(),
-    staleTime: 24 * 60 * 60 * 1000, // 24h
+  useQuery<
+    {
+      count: number;
+      results: Genre[];
+    },
+    Error
+  >(["genres"], () => apiClient.getAll(), {
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
     initialData: { count: genres.length, results: genres },
   });
 
