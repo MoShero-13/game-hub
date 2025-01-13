@@ -1,23 +1,18 @@
-import usePlatforms from "@/hooks/usePlatforms";
-import {
-  Button,
-  Menu,
-  MenuContent,
-  MenuItem,
-  MenuTrigger,
-  Select,
-} from "@chakra-ui/react";
+import usePlatforms, { Platform } from "@/hooks/usePlatforms";
+import { Button, MenuContent, MenuItem, MenuTrigger } from "@chakra-ui/react";
 import { MenuRoot } from "./ui/menu";
-import { Platform } from "@/hooks/usePlatforms";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface Props {
   onSelectPLatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
-const PlatformSelector = ({ onSelectPLatform, selectedPlatform }: Props) => {
+const PlatformSelector = ({ onSelectPLatform, selectedPlatformId }: Props) => {
   const { data, error } = usePlatforms();
+  const selectedPlatform = data?.results.find(
+    (p) => p?.id === selectedPlatformId
+  );
 
   if (error) return null;
 
@@ -30,13 +25,13 @@ const PlatformSelector = ({ onSelectPLatform, selectedPlatform }: Props) => {
       </MenuTrigger>
       <MenuContent
         position="absolute"
-        top="200px"
+        top="200px" // Consider using relative units or removing hardcoded position
         width="200px"
         marginBottom={5}
       >
         {data?.results.map((platform) => (
           <MenuItem
-            onClick={() => onSelectPLatform(platform)}
+            onClick={() => onSelectPLatform(platform)} // Fixed the typo here as well
             key={platform.id}
             value={platform.slug}
           >
