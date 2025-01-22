@@ -3,14 +3,12 @@ import { Button, MenuContent, MenuItem, MenuTrigger } from "@chakra-ui/react";
 import { MenuRoot } from "./ui/menu";
 import { IoIosArrowDown } from "react-icons/io";
 import usePlatform from "@/hooks/usePlatform";
+import useGameQueryStore from "@/store";
 
-interface Props {
-  onSelectPLatform: (platform: Platform) => void;
-  selectedPlatformId?: number;
-}
-
-const PlatformSelector = ({ onSelectPLatform, selectedPlatformId }: Props) => {
+const PlatformSelector = () => {
   const { data, error } = usePlatforms();
+  const setSelectedPlatformId = useGameQueryStore((s) => s.setPlatformId);
+  const selectedPlatformId = useGameQueryStore((s) => s.gameQuery.platformId);
   const selectedPlatform = usePlatform(selectedPlatformId);
 
   if (error) return null;
@@ -30,7 +28,7 @@ const PlatformSelector = ({ onSelectPLatform, selectedPlatformId }: Props) => {
       >
         {data?.results.map((platform) => (
           <MenuItem
-            onClick={() => onSelectPLatform(platform)} // Fixed the typo here as well
+            onClick={() => setSelectedPlatformId(platform.id)} // Fixed the typo here as well
             key={platform.id}
             value={platform.slug}
           >

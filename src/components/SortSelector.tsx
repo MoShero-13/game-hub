@@ -1,3 +1,4 @@
+import useGameQueryStore from "@/store";
 import {
   MenuRoot,
   MenuTrigger,
@@ -7,12 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 
-interface Props {
-  onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string;
-}
-
-const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
+const SortSelector = () => {
   const sortOrders = [
     { value: "", label: "Relavance" },
     { value: "-added", label: "Date added" },
@@ -22,6 +18,8 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
     { value: "-rating", label: "Averge rating" },
   ];
 
+  const setSortOrder = useGameQueryStore((s) => s.setSortOreder);
+  const sortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
   const currentSortOrder = sortOrders.find(
     (order) => order.value === sortOrder
   );
@@ -43,7 +41,7 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
       >
         {sortOrders.map((order) => (
           <MenuItem
-            onClick={() => onSelectSortOrder(order.value)}
+            onClick={() => setSortOrder(order.value)}
             key={order.value}
             value={order.value}
           >
