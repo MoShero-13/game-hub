@@ -1,5 +1,4 @@
 import usePlatforms from "@/hooks/usePlatforms";
-import { Platform } from "@/entites/Platform";
 import { Button, MenuContent, MenuItem, MenuTrigger } from "@chakra-ui/react";
 import { MenuRoot } from "./ui/menu";
 import { IoIosArrowDown } from "react-icons/io";

@@ -1,4 +1,4 @@
-import { Trailer } from "@/entites/Trailer";
+import Trailer from "@/entites/Trailer";
 import APIClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 

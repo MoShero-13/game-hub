@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FaWindows,
   FaPlaystation,
@@ -11,7 +10,7 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { HStack } from "@chakra-ui/react";
-import { Platform } from "@/entites/Platform";
+import Platform from "@/entites/Platform";
 import { IconType } from "react-icons";
 
 interface Props {

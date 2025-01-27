@@ -1,5 +1,4 @@
 import useGenres from "@/hooks/useGenres";
-import { Genre } from "@/entites/Genre";
 import getCroppedImageUrl from "@/services/image-url";
 import useGameQueryStore from "@/store";
 import {
