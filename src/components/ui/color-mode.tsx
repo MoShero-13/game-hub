@@ -57,11 +57,12 @@ export const ColorModeButton = forwardRef<
   HTMLButtonElement,
   ColorModeButtonProps
 >(function ColorModeButton(props, ref) {
-  const { toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Switch
       onChange={toggleColorMode}
       aria-label="Toggle color mode"
+      checked={colorMode === "dark"}
       {...props}
       colorPalette="blue"
       size="lg"
